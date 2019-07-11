@@ -18,7 +18,7 @@ function draw() {
 
   ball.x += ball.dx;
   ball.y += ball.dy;
-  
+  requestAnimationFrame(draw);
 }
 
-var interval = setInterval(draw, game.gameSpeed);
+draw()
