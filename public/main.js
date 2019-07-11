@@ -1,4 +1,3 @@
-
 var canvasPos = canvas.getPosition(canvas.myCanvas);
 canvas.myCanvas.addEventListener("mousemove", setMousePosition, false);
 function setMousePosition(e) {
@@ -15,9 +14,11 @@ function draw() {
   ball.drawBall();
   collision.collisionDetection();
   game.drawScore();
+  game.drawLives();
 
-  canvas.x += ball.dx;
-  canvas.y += ball.dy;
+  ball.x += ball.dx;
+  ball.y += ball.dy;
+  
 }
 
 var interval = setInterval(draw, game.gameSpeed);

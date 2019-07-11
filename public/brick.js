@@ -36,5 +36,4 @@ var brick = new (function() {
       }
     }
   };
-  
 })();
