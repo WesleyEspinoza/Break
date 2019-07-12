@@ -1,17 +1,19 @@
-var paddle = new (function() {
-  this.paddleHeight = 10;
-  this.paddleWidth = 75;
-  this.paddleX = 0;
-  this.drawPaddle = function drawPaddle() {
-    canvas.ctx.beginPath();
-    canvas.ctx.rect(
+class Paddle {
+  constructor(paddleHeight = 10, paddleWidth = 75, paddleX = 0) {
+    this.paddleHeight = paddleHeight;
+    this.paddleWidth = paddleWidth;
+    this.paddleX = paddleX;
+  }
+  drawPaddle(ctx, canvas) {
+    ctx.beginPath();
+    ctx.rect(
       this.paddleX,
-      canvas.myCanvas.height - this.paddleHeight - 10,
+      canvas.height - this.paddleHeight - 10,
       this.paddleWidth,
       this.paddleHeight
     );
-    canvas.ctx.fillStyle = "#0095DD";
-    canvas.ctx.fill();
-    canvas.ctx.closePath();
+    ctx.fillStyle = "#0095DD";
+    ctx.fill();
+    ctx.closePath();
   };
-})();
+}

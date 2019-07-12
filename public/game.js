@@ -1,17 +1,19 @@
-var game = new (function() {
-  this.score = 0;
-  this.lives = 3;
-  this.gameSpeed = 10;
+class Game {
+  constructor(score = 0, lives = 3) {
+    this.score = 0;
+    this.lives = 3;
+  }
 
-  this.drawScore = function drawScore() {
-    canvas.ctx.font = "16px Arial";
-    canvas.ctx.fillStyle = "#0095DD";
-    canvas.ctx.fillText("Score: " + this.score, 8, 20);
+  drawScore(ctx) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("Score: " + this.score, 8, 20);
   };
 
-  this.drawLives = function drawLives() {
-    canvas.ctx.font = "16px Arial";
-    canvas.ctx.fillStyle = "#0095DD";
-    canvas.ctx.fillText("Lives: " + this.lives, canvas.myCanvas.width - 65, 20);
+  drawLives(ctx, canvas) {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("Lives: " + this.lives, canvas.width - 65, 20);
   };
-})();
+
+}
