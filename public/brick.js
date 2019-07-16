@@ -10,6 +10,7 @@ class Brick {
     this.bricks = [];
   }
    drawBricks(ctx) {
+    const colors = ['#f54242', '#f56342', '#f59042', '#f5bc42', '#f5ef42', '#c5f542', '#42f54b', '#42f5b3', '#42f5ef', '#4293f5', '#424bf5', '#9042f5'];
     for (var c = 0; c < this.brickColumnCount; c++) {
       for (var r = 0; r < this.brickRowCount; r++) {
         if (this.bricks[c][r].status == 1) {
@@ -21,7 +22,10 @@ class Brick {
           this.bricks[c][r].y = brickY;
           ctx.beginPath();
           ctx.rect(brickX, brickY, this.brickWidth, this.brickHeight);
-          ctx.fillStyle = "#0095DD";
+          // ctx.fillStyle = "#0095DD"; Original
+          // ctx.fillStyle = colors[r]; Challenge 1
+          // ctx.fillStyle = colors[c]; // Challange 2
+          ctx.fillStyle = this.bricks[c][r].color;
           ctx.fill();
           ctx.closePath();
         }
@@ -29,11 +33,18 @@ class Brick {
     }
   };
 
-  populateBricks() {
+  populateBricks(colors) {
+    const max = colors.length - 1;
+    let counter = 0;
+
     for (var i = 0; i < this.brickColumnCount; i++) {
       this.bricks[i] = [];
       for (var r = 0; r < this.brickRowCount; r++) {
-        this.bricks[i][r] = { x: 0, y: 0, status: 1 };
+        if (counter > max) {
+          counter = 0
+        };
+        this.bricks[i][r] = { x: 0, y: 0, status: 1, color: colors[counter] };
+        counter ++;
       }
     }
   };
